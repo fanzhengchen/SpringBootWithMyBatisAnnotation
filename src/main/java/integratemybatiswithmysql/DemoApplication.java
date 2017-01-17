@@ -5,8 +5,11 @@ import integratemybatiswithmysql.mapper.UserMapper;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Service;
 
 @SpringBootApplication
+@Service
 public class DemoApplication implements CommandLineRunner {
 
     private final UserMapper userMapper;
@@ -23,5 +26,10 @@ public class DemoApplication implements CommandLineRunner {
     @Override
     public void run(String... strings) throws Exception {
         System.out.println(userMapper.findUserByName("mark"));
+    }
+
+    @Bean
+    public UserMapper getUserMapper() {
+        return userMapper;
     }
 }
